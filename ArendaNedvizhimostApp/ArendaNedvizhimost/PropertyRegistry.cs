@@ -17,7 +17,7 @@ namespace ArendaNedvizhimost.App
             string name = Console.ReadLine()?.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                Console.WriteLine("✗ Название не может быть пустым!");
+                Console.WriteLine("Название не может быть пустым!");
                 Console.ReadKey();
                 return;
             }
@@ -26,7 +26,7 @@ namespace ArendaNedvizhimost.App
             string type = Console.ReadLine()?.Trim();
             if (string.IsNullOrEmpty(type))
             {
-                Console.WriteLine("✗ Тип не может быть пустым!");
+                Console.WriteLine("Тип не может быть пустым!");
                 Console.ReadKey();
                 return;
             }
@@ -35,7 +35,7 @@ namespace ArendaNedvizhimost.App
             string address = Console.ReadLine()?.Trim();
             if (string.IsNullOrEmpty(address))
             {
-                Console.WriteLine("✗ Адрес не может быть пустым!");
+                Console.WriteLine("Адрес не может быть пустым!");
                 Console.ReadKey();
                 return;
             }
@@ -44,7 +44,7 @@ namespace ArendaNedvizhimost.App
             string areaInput = Console.ReadLine()?.Trim();
             if (!double.TryParse(areaInput, out double area))
             {
-                Console.WriteLine("✗ Некорректный формат площади!");
+                Console.WriteLine("Некорректный формат площади!");
                 Console.ReadKey();
                 return;
             }
@@ -53,7 +53,7 @@ namespace ArendaNedvizhimost.App
             string priceInput = Console.ReadLine()?.Trim();
             if (!decimal.TryParse(priceInput, out decimal price))
             {
-                Console.WriteLine("✗ Некорректный формат цены!");
+                Console.WriteLine("Некорректный формат цены!");
                 Console.ReadKey();
                 return;
             }
@@ -61,7 +61,7 @@ namespace ArendaNedvizhimost.App
             Property property = new Property(nextId++, name, type, address, area, price);
             properties.Add(property);
 
-            Console.WriteLine("\n✓ Объект успешно добавлен!");
+            Console.WriteLine("\nОбъект успешно добавлен!");
             Console.ReadKey();
         }
 
@@ -105,16 +105,16 @@ namespace ArendaNedvizhimost.App
                 if (property != null)
                 {
                     properties.Remove(property);
-                    Console.WriteLine($"\n✓ Объект '{property.Name}' удален!");
+                    Console.WriteLine($"\nОбъект '{property.Name}' удален!");
                 }
                 else
                 {
-                    Console.WriteLine("\n✗ Объект с таким ID не найден.");
+                    Console.WriteLine("\nОбъект с таким ID не найден.");
                 }
             }
             else
             {
-                Console.WriteLine("\n✗ Некорректный ID.");
+                Console.WriteLine("\nНекорректный ID.");
             }
 
             Console.ReadKey();

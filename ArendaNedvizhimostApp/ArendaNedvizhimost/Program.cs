@@ -6,6 +6,7 @@ namespace ArendaNedvizhimost.App
     {
         static PropertyRegistry propertyRegistry = new PropertyRegistry();
         static ContractManager contractManager = new ContractManager(propertyRegistry);
+        static PaymentManager paymentManager = new PaymentManager(contractManager);
 
         static void Main(string[] args)
         {
@@ -137,12 +138,30 @@ namespace ArendaNedvizhimost.App
             }
         }
 
-
         static void ManagePayments()
         {
-            Console.WriteLine("\n=== Начисление и учёт платежей ===");
-            Console.WriteLine("Функция в разработке...");
-            Console.ReadKey();
+            bool back = false;
+            while (!back)
+            {
+                Console.Clear();
+                Console.WriteLine("=== Начисление и учёт платежей ===\n");
+                Console.WriteLine("1. Начислить платёж");
+                Console.WriteLine("2. Просмотреть все начисления");
+                Console.WriteLine("3. Отметить платёж как оплаченный");
+                Console.WriteLine("4. Просмотреть задолженность");
+                Console.WriteLine("0. Назад");
+                Console.Write("\nВыберите пункт: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1": paymentManager.CalculatePayment(); break;
+                    case "2": paymentManager.ViewPayments(); break;
+                    case "3": paymentManager.MarkAsPaid(); break;
+                    case "4": paymentManager.ViewDebts(); break;
+                    case "0": back = true; break;
+                    default: Console.WriteLine("Неверный выбор."); Console.ReadKey(); break;
+                }
+            }
         }
     }
 }

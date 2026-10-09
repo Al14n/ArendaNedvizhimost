@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Contract.cs" />
     <Compile Include="ContractManager.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="PaymentManager.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

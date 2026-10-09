@@ -168,5 +168,10 @@ namespace ArendaNedvizhimost
 
             Console.ReadKey();
         }
+
+        public List<Contract> GetActiveContracts()
+        {
+            return contracts.Where(c => c.Status == "Активный").ToList();
+        }
     }
 }

@@ -4,6 +4,9 @@ namespace ArendaNedvizhimost.App
 {
     class Program
     {
+        static PropertyRegistry propertyRegistry = new PropertyRegistry();
+        static ContractManager contractManager = new ContractManager(propertyRegistry);
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -52,8 +55,6 @@ namespace ArendaNedvizhimost.App
             }
         }
 
-        static PropertyRegistry propertyRegistry = new PropertyRegistry();
-
         static void ManageProperties()
         {
             bool backToMenu = false;
@@ -95,10 +96,47 @@ namespace ArendaNedvizhimost.App
 
         static void ManageContracts()
         {
-            Console.WriteLine("\n=== Управление договорами аренды ===");
-            Console.WriteLine("Функция в разработке...");
-            Console.ReadKey();
+            bool backToMenu = false;
+            while (!backToMenu)
+            {
+                Console.Clear();
+                Console.WriteLine("=== Управление договорами аренды ===");
+                Console.WriteLine();
+                Console.WriteLine("1. Создать договор");
+                Console.WriteLine("2. Просмотреть все договоры");
+                Console.WriteLine("3. Расторгнуть договор");
+                Console.WriteLine("4. Пролонгировать договор");
+                Console.WriteLine("0. Назад в главное меню");
+                Console.WriteLine();
+                Console.Write("Выберите пункт меню: ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        contractManager.CreateContract();
+                        break;
+                    case "2":
+                        contractManager.ViewContracts();
+                        break;
+                    case "3":
+                        contractManager.TerminateContract();
+                        break;
+                    case "4":
+                        contractManager.ProlongContract();
+                        break;
+                    case "0":
+                        backToMenu = true;
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор.");
+                        Console.ReadKey();
+                        break;
+                }
+            }
         }
+
 
         static void ManagePayments()
         {
